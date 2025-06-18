@@ -1,24 +1,358 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>blood-flow-connect-mockup</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Connect - Save Lives</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Auth Flow -->
+    <div id="auth-container" class="container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="logo">
+                    <span class="blood-drop">🩸</span>
+                    <h1>Blood Connect</h1>
+                </div>
+                <p>Connect. Donate. Save Lives.</p>
+            </div>
 
-    <meta property="og:title" content="blood-flow-connect-mockup" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+            <div class="role-selection">
+                <h2>I am a...</h2>
+                <div class="role-buttons">
+                    <button class="role-btn" data-role="donor">
+                        <span class="role-icon">❤️</span>
+                        <span>Blood Donor</span>
+                        <small>I want to donate blood</small>
+                    </button>
+                    <button class="role-btn" data-role="recipient">
+                        <span class="role-icon">🏥</span>
+                        <span>Need Blood</span>
+                        <small>I need blood urgently</small>
+                    </button>
+                </div>
+            </div>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+            <form id="auth-form" class="auth-form" style="display: none;">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="bloodType">Blood Type</label>
+                    <select id="bloodType" required>
+                        <option value="">Select Blood Type</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" placeholder="Enter your city" required>
+                </div>
+                <button type="submit" class="btn-primary">Continue</button>
+            </form>
+        </div>
+    </div>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <!-- Donor Dashboard -->
+    <div id="donor-dashboard" class="container" style="display: none;">
+        <header class="dashboard-header">
+            <div class="user-info">
+                <div class="avatar">
+                    <span id="user-initials">JD</span>
+                </div>
+                <div>
+                    <h1 id="welcome-text">Welcome, John Doe</h1>
+                    <div class="badges">
+                        <span class="badge badge-green" id="blood-type-badge">O+ Donor</span>
+                        <span class="badge badge-outline">Verified</span>
+                    </div>
+                </div>
+            </div>
+            <button class="notification-btn">
+                🔔
+                <span class="notification-count">3</span>
+            </button>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon stat-red">❤️</div>
+                <div class="stat-content">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Total Donations</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon stat-blue">🏆</div>
+                <div class="stat-content">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Badges Earned</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon stat-green">📅</div>
+                <div class="stat-content">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Days Until Eligible</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon stat-orange">⏰</div>
+                <div class="stat-content">
+                    <div class="stat-number">36</div>
+                    <div class="stat-label">Lives Saved</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+            <div class="main-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>📍 Nearby Blood Requests</h3>
+                        <button class="btn-outline">View Map</button>
+                    </div>
+                    <div class="requests-list">
+                        <div class="request-item">
+                            <div class="request-info">
+                                <div class="blood-type-badge">O+</div>
+                                <div>
+                                    <div class="request-location">City Hospital</div>
+                                    <div class="request-meta">0.8 km • 5 min ago</div>
+                                </div>
+                            </div>
+                            <div class="request-actions">
+                                <span class="urgency-badge critical">Critical</span>
+                                <button class="btn-respond">Respond</button>
+                            </div>
+                        </div>
+                        <div class="request-item">
+                            <div class="request-info">
+                                <div class="blood-type-badge">O+</div>
+                                <div>
+                                    <div class="request-location">General Hospital</div>
+                                    <div class="request-meta">1.2 km • 12 min ago</div>
+                                </div>
+                            </div>
+                            <div class="request-actions">
+                                <span class="urgency-badge urgent">Urgent</span>
+                                <button class="btn-respond">Respond</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Next Donation Eligibility</h3>
+                    </div>
+                    <div class="eligibility-content">
+                        <div class="days-left">7 Days</div>
+                        <div class="next-date">December 25, 2024</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%;"></div>
+                        </div>
+                        <button class="btn-primary btn-disabled" disabled>Schedule Next Donation</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Achievements</h3>
+                    </div>
+                    <div class="achievements-grid">
+                        <div class="achievement earned">
+                            <div class="achievement-icon">🏆</div>
+                            <div class="achievement-name">Life Saver</div>
+                        </div>
+                        <div class="achievement earned">
+                            <div class="achievement-icon">🏆</div>
+                            <div class="achievement-name">Hero</div>
+                        </div>
+                        <div class="achievement">
+                            <div class="achievement-icon">🏆</div>
+                            <div class="achievement-name">Legend</div>
+                        </div>
+                        <div class="achievement earned">
+                            <div class="achievement-icon">🏆</div>
+                            <div class="achievement-name">Guardian</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recipient Dashboard -->
+    <div id="recipient-dashboard" class="container" style="display: none;">
+        <header class="dashboard-header">
+            <div class="user-info">
+                <div class="avatar avatar-blue">
+                    <span id="recipient-initials">JD</span>
+                </div>
+                <div>
+                    <h1 id="recipient-welcome-text">Welcome, Jane Doe</h1>
+                    <div class="badges">
+                        <span class="badge badge-blue" id="recipient-blood-type-badge">B+ Patient</span>
+                        <span class="badge badge-outline">Verified</span>
+                    </div>
+                </div>
+            </div>
+            <button class="emergency-btn" onclick="showEmergencyRequest()">
+                🚨 Emergency Request
+            </button>
+        </header>
+
+        <div class="alert alert-info">
+            <div class="alert-icon">ℹ️</div>
+            <div>
+                <strong>Quick Access:</strong> Use the emergency button for urgent blood requirements. 
+                Your request will be sent to nearby donors immediately.
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+            <div class="main-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>👥 Available Donors Nearby</h3>
+                        <button class="btn-outline">View All</button>
+                    </div>
+                    <div class="donors-list">
+                        <div class="donor-item">
+                            <div class="donor-info">
+                                <div class="avatar avatar-green">
+                                    <span>AS</span>
+                                </div>
+                                <div>
+                                    <div class="donor-name">Amit Singh</div>
+                                    <div class="donor-meta">B+ • Last donated: 3 months ago</div>
+                                    <div class="donor-location">📍 2.1 km away</div>
+                                </div>
+                            </div>
+                            <div class="donor-actions">
+                                <span class="availability-badge available">Available</span>
+                                <button class="btn-contact">Contact</button>
+                            </div>
+                        </div>
+                        <div class="donor-item">
+                            <div class="donor-info">
+                                <div class="avatar avatar-green">
+                                    <span>RK</span>
+                                </div>
+                                <div>
+                                    <div class="donor-name">Rajesh Kumar</div>
+                                    <div class="donor-meta">O+ • Last donated: 2 months ago</div>
+                                    <div class="donor-location">📍 1.8 km away</div>
+                                </div>
+                            </div>
+                            <div class="donor-actions">
+                                <span class="availability-badge available">Available</span>
+                                <button class="btn-contact">Contact</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Recent Requests</h3>
+                    </div>
+                    <div class="recent-requests">
+                        <div class="request-history-item">
+                            <div class="request-date">2 days ago</div>
+                            <div class="request-details">Emergency request for B+</div>
+                            <span class="status-badge fulfilled">Fulfilled</span>
+                        </div>
+                        <div class="request-history-item">
+                            <div class="request-date">1 week ago</div>
+                            <div class="request-details">Scheduled donation request</div>
+                            <span class="status-badge fulfilled">Fulfilled</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Emergency Contacts</h3>
+                    </div>
+                    <div class="emergency-contacts">
+                        <div class="contact-item">
+                            <div class="contact-icon">🏥</div>
+                            <div>
+                                <div class="contact-name">City Hospital</div>
+                                <div class="contact-phone">+91 98765-43210</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🚑</div>
+                            <div>
+                                <div class="contact-name">Emergency Services</div>
+                                <div class="contact-phone">108</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Request Modal -->
+    <div id="emergency-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🚨 Emergency Blood Request</h2>
+                <button class="modal-close" onclick="hideEmergencyRequest()">&times;</button>
+            </div>
+            <form id="emergency-form">
+                <div class="form-group">
+                    <label>Blood Type Needed</label>
+                    <select id="emergency-blood-type" required>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Units Required</label>
+                    <input type="number" id="units" min="1" max="10" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Hospital/Location</label>
+                    <input type="text" id="hospital" placeholder="Enter hospital name" required>
+                </div>
+                <div class="form-group">
+                    <label>Additional Notes</label>
+                    <textarea id="notes" rows="3" placeholder="Any additional information..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary btn-emergency">Send Emergency Request</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
