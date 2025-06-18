@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { Avatar, AvatarContent, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Bell, MapPin, Calendar, Award, Heart, Clock } from 'lucide-react';
 
 interface DonorDashboardProps {
@@ -43,10 +43,9 @@ const DonorDashboard = ({ userData, onViewRequests, onViewMap }: DonorDashboardP
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Avatar className="h-12 w-12">
-              <AvatarContent className="bg-medical-green text-white font-bold">
+              <AvatarFallback className="bg-medical-green text-white font-bold">
                 {userData.name.split(' ').map(n => n[0]).join('')}
-              </AvatarContent>
-              <AvatarFallback>D</AvatarFallback>
+              </AvatarFallback>
             </Avatar>
             <div>
               <h1 className="text-2xl font-bold">Welcome, {userData.name}</h1>

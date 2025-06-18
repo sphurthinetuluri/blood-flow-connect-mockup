@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarContent, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { AlertTriangle, MapPin, Clock, Phone, Shield } from 'lucide-react';
 import EmergencyRequest from './EmergencyRequest';
 
@@ -52,10 +52,9 @@ const RecipientDashboard = ({ userData, onViewMap }: RecipientDashboardProps) =>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Avatar className="h-12 w-12">
-              <AvatarContent className="bg-medical-blue text-white font-bold">
+              <AvatarFallback className="bg-medical-blue text-white font-bold">
                 {userData.name.split(' ').map(n => n[0]).join('')}
-              </AvatarContent>
-              <AvatarFallback>R</AvatarFallback>
+              </AvatarFallback>
             </Avatar>
             <div>
               <h1 className="text-2xl font-bold">Welcome, {userData.name}</h1>
@@ -149,10 +148,9 @@ const RecipientDashboard = ({ userData, onViewMap }: RecipientDashboardProps) =>
                   <div key={donor.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
                     <div className="flex items-center gap-3">
                       <Avatar>
-                        <AvatarContent className="bg-medical-green text-white">
+                        <AvatarFallback className="bg-medical-green text-white">
                           {donor.name.split(' ').map(n => n[0]).join('')}
-                        </AvatarContent>
-                        <AvatarFallback>D</AvatarFallback>
+                        </AvatarFallback>
                       </Avatar>
                       <div>
                         <div className="flex items-center gap-2">
